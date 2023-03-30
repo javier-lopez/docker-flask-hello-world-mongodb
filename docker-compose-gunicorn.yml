@@ -2,17 +2,16 @@ version: '3.4'
 
 services:
   mongodb:
-    image: aashreys/mongo-auth:latest
+    image: mongo:6-jammy
+    #ports:
+      #- "27017:27017"
     volumes:
       - ./mongodb-data:/data/db
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - AUTH=yes
-      - MONGODB_ADMIN_USER=admin
-      - MONGODB_ADMIN_PASS=admin
-      - MONGODB_APPLICATION_DATABASE=app
-      - MONGODB_APPLICATION_USER=app
-      - MONGODB_APPLICATION_PASS=app
+      - MONGO_INITDB_DATABASE=app
+      - MONGO_INITDB_ROOT_USERNAME=app
+      - MONGO_INITDB_ROOT_PASSWORD=app
     networks:
       - backend
 
